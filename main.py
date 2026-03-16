@@ -28,7 +28,6 @@ def main():
     else:
         model = timm.create_model(args.model, pretrained=False)
     
-    model = timm.create_model(args.model, pretrained=False)
     model = model.to("cpu").eval()
 
     input_shape = (1, 3, args.image_size, args.image_size)
