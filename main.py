@@ -17,10 +17,16 @@ args = parser.parse_args()
 
 def main():
 
-    # these models do not support 448, so skipping it
+    # these models do not support 448 directly, 
     if args.image_size != 224 and (args.model == 'vit_tiny_patch16_224' or args.model=='tiny_vit_5m_224'):
-        print('Image size and Model mismatch, skipping ')
-        return
+        if args.model == 'vit_tiny_patch16_224':
+            model = timm.create_model(args.model, pretrained=False, img_size=args.image_size)
+        else: 
+            # tiny_vit_5m_224 doesn't have any input param called img_size
+            # so it wont support 448 pixels, so skipping
+            return 
+    else:
+        model = timm.create_model(args.model, pretrained=False)
     
     model = timm.create_model(args.model, pretrained=False)
     model = model.to("cpu").eval()
