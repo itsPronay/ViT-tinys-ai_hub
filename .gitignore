@@ -3,3 +3,5 @@ wandb
 utils/__pycache__
 README.pdf
 __pycache__/
+.DS_Store
+benchmark_results.csv
