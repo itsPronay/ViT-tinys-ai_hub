@@ -13,11 +13,10 @@ parser = argparse.ArgumentParser(description='Run the benchmark script for in co
 parser.add_argument('--runs', type=int, default=10, help='Number of runs to perform for benchmarking')
 # parser.add_argument('--run_warmup', action='store_true', help='Whether to run warmup runs before benchmarking')
 parser.add_argument('--warmup_runs', type=int, default=10, help='Number of warmup runs to perform before benchmarking')
-parser.add_argument('--model_name', type=str, default='vit_tiny_patch16_224', help='Name of the model to benchmark')
-parser.add_argument("--image_sizes", nargs="+", type=int, default=[224], help="List of image sizes to run the benchmark on")
+parser.add_argument("--image_sizes", nargs="+", type=int, default=[224, 448], help="List of image sizes to run the benchmark on")
 parser.add_argument("--ai_hub_device", default='Samsung Galaxy S25 (Family)', help="Physical ai_hub device to run the benchmark on")
 parser.add_argument('--wandb_mode', choices=['online', 'offline', 'disabled'], default='online', help='WandB logging mode')
-parser.add_argument("--device", choices=['cpu', 'cuda', 'ai_hub', 'all'], default='cpu', help="Device to run the benchmark on")
+parser.add_argument("--device", choices=['cpu', 'cuda', 'ai_hub', 'all'], default='all', help="Device to run the benchmark on")
 parser.add_argument("--models", nargs="+", default=[
     "vit_tiny_patch16_224",
     "mobilevitv2_100",
