@@ -7,17 +7,11 @@ def get_model(model_name, image_size):
     if any(
         kw in model_name
         for kw in [
-            "efficientvit",
-            "levit",
-            "swin",
+            "vit_tiny",
             "mobilevit",
-            "nest",
-            "pit",
+            "vitfs"
         ]
-    ) or model_name in [
-        "vitfs_tiny_patch16_gap_reg4_dinov2_bn_init",
-        "vitfs_tiny_patch16_gap_reg4_dinov2_init"
-    ]:
+    ) :
         model = timm.create_model(
             model_name,
             pretrained=False,
